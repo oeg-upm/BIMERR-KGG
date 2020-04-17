@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="original-rmlmapper-4.7.0-r154">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../java-libraries/rmlmapper/target/original-rmlmapper-4.7.0-r154.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
