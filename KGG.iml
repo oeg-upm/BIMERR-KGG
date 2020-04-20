@@ -10,5 +10,12 @@
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="original-rmlmapper-4.7.0-r154" level="project" />
     <orderEntry type="library" name="jars" level="project" />
+    <orderEntry type="library" name="org.eclipse.rdf4j:rdf4j-rio-api:3.2.0-M1" level="project" />
+    <orderEntry type="library" name="org.eclipse.rdf4j:rdf4j-rio-turtle:3.2.0-M1" level="project" />
+    <orderEntry type="library" name="commons-lang:commons-lang:2.6" level="project" />
+    <orderEntry type="library" name="com.jayway.jsonpath:json-path:2.4.0" level="project" />
+    <orderEntry type="library" name="org.rdfhdt:hdt-jena:1.1" level="project" />
+    <orderEntry type="library" name="grel-functions-java-v0.5.0" level="project" />
+    <orderEntry type="library" name="com.google.guava:guava:18.0" level="project" />
   </component>
 </module>

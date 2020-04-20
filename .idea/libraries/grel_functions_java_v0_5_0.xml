@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="grel-functions-java-v0.5.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../java-libraries/grel-functions-java/target/grel-functions-java-v0.5.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

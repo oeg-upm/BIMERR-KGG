@@ -1,0 +1,425 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ob: <http://www.semanticweb.org/bimmer/ob#>.
+
+@base <http://example.com/base/>.
+
+
+<#BuildingTriplesMapping> a rr:TriplesMap;
+
+rml:logicalSource [
+	rml:source "./data/test_case.xml";
+	rml:iterator "/OccupantBehavior/Buildings/Building";
+	rml:referenceFormulation ql:XPath];
+
+rr:subjectMap [
+	rr:template "http://www.semanticweb.org/bimmer/ob/resource/building/{@ID}";
+	rr:class ob:Building];
+
+rr:predicateObjectMap [
+	rr:predicate ob:identifier;
+	rr:objectMap[
+		rml:reference "@ID"]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:description;
+	rr:objectMap[
+		rml:reference "Description";
+		rr:dataType xsd:string]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:buildingAddress;
+	rr:objectMap[
+		rml:reference "Address"]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:hasSpace;
+	rr:objectMap[
+		rr:parentTriplesMap <#SpaceTriplesMapping>]] ;
+
+rr:predicateObjectMap [
+	rr:predicate ob:hasBuildingType;
+	rr:objectMap[
+		rr:parentTriplesMap <#BuildingTypeTriplesMapping>;
+		rr:joinCondition [
+			rr:child "Type";
+			rr:parent "Type"]]] .
+
+
+
+
+
+<#BuildingTypeTriplesMapping> a rr:TriplesMap;
+
+rml:logicalSource [
+	rml:source "./data/test_case.xml";
+	rml:iterator "/OccupantBehavior/Buildings/Building";
+	rml:referenceFormulation ql:XPath];
+
+rr:subjectMap [
+	rr:template "http://www.semanticweb.org/bimmer/ob/resource/building/{Type}";
+	rr:class ob:BuildingType].
+
+
+
+
+
+<#SpaceTriplesMapping> a rr:TriplesMap;
+
+rml:logicalSource [
+	rml:source "./data/test_case.xml";
+	rml:iterator "/OccupantBehavior/Buildings/Building/Spaces/Space";
+	rml:referenceFormulation ql:XPath];
+
+rr:subjectMap [
+	rr:template "http://www.semanticweb.org/bimmer/ob/resource/space/{@ID}";
+	rr:class ob:Space];
+
+rr:predicateObjectMap [
+	rr:predicate ob:identifier;
+	rr:objectMap[
+		rml:reference "@ID";
+		rr:dataType xsd:string]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:description;
+	rr:objectMap[
+		rml:reference "Description";
+		rr:dataType xsd:string]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:maxNumberOccupants;
+	rr:objectMap [
+		rml:reference "MaxNumberOccupants";
+		rr:dataType xsd:integer]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:minNumberOccupants;
+	rr:objectMap [
+		rml:reference "MinNumberOccupants";
+		rr:dataType xsd:integer]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:hasSpaceType;
+	rr:objectMap[
+		rr:parentTriplesMap <#SpaceTypeTriplesMapping>;
+		rr:joinCondition [
+			rr:child "Type";
+			rr:parent "Type"]]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:hasMeeting;
+	rr:objectMap[
+		rr:parentTriplesMap <#MeetingTriplesMapping>;
+		rr:joinCondition [
+			rr:child "ID";
+			rr:parent "@ID"]]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:hasSystem;
+	rr:objectMap[
+		rr:parentTriplesMap <#HVACTriplesMapping>;
+		rr:joinCondition [
+			rr:child "Systems/HVAC/@ID";
+			rr:parent "@ID"]]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:hasSystem;
+	rr:objectMap[
+		rr:parentTriplesMap <#LightTriplesMapping>;
+		rr:joinCondition [
+			rr:child "Systems/Light/@ID";
+			rr:parent "@ID"]]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:hasSystem;
+	rr:objectMap[
+		rr:parentTriplesMap <#WindowTriplesMapping>;
+		rr:joinCondition [
+			rr:child "Systems/Window/@ID";
+			rr:parent "@ID"]]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:hasSystem;
+	rr:objectMap[
+		rr:parentTriplesMap <#PlugAndLoadTriplesMapping>;
+		rr:joinCondition [
+			rr:child "Systems/PlugAndLoad/@ID";
+			rr:parent "@ID"]]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:hasSystem;
+	rr:objectMap[
+		rr:parentTriplesMap <#ThermostatTriplesMapping>;
+		rr:joinCondition [
+			rr:child "Systems/Thermostat/@ID";
+			rr:parent "@ID"]]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:hasSystem;
+	rr:objectMap[
+		rr:parentTriplesMap <#ShadeAndBlindTriplesMapping>;
+		rr:joinCondition [
+			rr:child "Systems/ShadeAndBlind/@ID";
+			rr:parent "@ID"]]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:hasOccupant;
+	rr:objectMap[
+		rr:parentTriplesMap <#OccupantTriplesMapping>]].
+
+
+
+<#SpaceTypeTriplesMapping> a rr:TriplesMap;
+
+rml:logicalSource [
+	rml:source "./data/test_case.xml";
+	rml:iterator "/OccupantBehavior/Buildings/Building/Spaces/Space";
+	rml:referenceFormulation ql:XPath];
+
+rr:subjectMap [
+	rr:template "http://www.semanticweb.org/bimmer/ob/resource/space/{Type}";
+	rr:class ob:SpaceType].
+
+
+
+
+
+<#MeetingTriplesMapping> a rr:TriplesMapping;
+
+rml:logicalSource [
+	rml:source "./data/test_case.xml";
+	rml:iterator "/OccupantBehavior/Buildings/Building/Spaces/Space/Meeting";
+	rml:referenceFormulation ql:XPath];
+
+rr:subjectMap [
+	rr:template "http://www.semanticweb.org/bimmer/ob/resource/meeting/{ID}";
+	rr:class ob:SpaceType];
+
+rr:predicateObjectMap [
+	rr:predicate ob:meetingProbability;
+	rr:objectMap [
+		rml:reference "MeetingProbability"];
+		rr:dataType xsd:float].
+
+
+
+
+<#HVACTriplesMapping> a rr:TriplesMap;
+
+rml:logicalSource [
+	rml:source "./data/test_case.xml";
+	rml:iterator "/OccupantBehavior/Buildings/Building/Spaces/Space/Systems/HVAC";
+	rml:referenceFormulation ql:XPath];
+
+rr:subjectMap [
+	rr:template "http://www.semanticweb.org/bimmer/ob/resource/system/{@ID}";
+	rr:class ob:HVAC];
+
+rr:predicateObjectMap [
+	rr:predicate ob:identifier;
+	rr:objectMap [
+		rml:reference "@ID";
+		rr:dataType xsd:string]].
+
+
+
+
+
+<#LightTriplesMapping> a rr:TriplesMap;
+
+rml:logicalSource [
+	rml:source "./data/test_case.xml";
+	rml:iterator "/OccupantBehavior/Buildings/Building/Spaces/Space/Systems/Light";
+	rml:referenceFormulation ql:XPath];
+
+rr:subjectMap [
+	rr:template "http://www.semanticweb.org/bimmer/ob/resource/system/{@ID}";
+	rr:class ob:Light];
+
+rr:predicateObjectMap [
+	rr:predicate ob:identifier;
+	rr:objectMap [
+		rml:reference "@ID";
+		rr:dataType xsd:string]].
+
+
+
+
+
+<#WindowTriplesMapping> a rr:TriplesMap;
+
+rml:logicalSource [
+	rml:source "./data/test_case.xml";
+	rml:iterator "/OccupantBehavior/Buildings/Building/Spaces/Space/Systems/Window";
+	rml:referenceFormulation ql:XPath];
+
+rr:subjectMap [
+	rr:template "http://www.semanticweb.org/bimmer/ob/resource/system/{@ID}";
+	rr:class ob:Window];
+
+rr:predicateObjectMap [
+	rr:predicate ob:identifier;
+	rr:objectMap [
+		rml:reference "@ID";
+		rr:dataType xsd:string]].
+
+
+
+
+<#PlugAndLoadTriplesMapping> a rr:TriplesMap;
+
+rml:logicalSource [
+	rml:source "./data/test_case.xml";
+	rml:iterator "/OccupantBehavior/Buildings/Building/Spaces/Space/Systems/PlugAndLoad";
+	rml:referenceFormulation ql:XPath];
+
+rr:subjectMap [
+	rr:template "http://www.semanticweb.org/bimmer/ob/resource/system/{@ID}";
+	rr:class ob:PlugAndLoad];
+
+rr:predicateObjectMap [
+	rr:predicate ob:identifier;
+	rr:objectMap [
+		rml:reference "@ID";
+		rr:dataType xsd:string]].
+
+
+<#ThermostatTriplesMapping> a rr:TriplesMap;
+
+rml:logicalSource [
+	rml:source "./data/test_case.xml";
+	rml:iterator "/OccupantBehavior/Buildings/Building/Spaces/Space/Systems/Thermostat";
+	rml:referenceFormulation ql:XPath];
+
+rr:subjectMap [
+	rr:template "http://www.semanticweb.org/bimmer/ob/resource/system/{@ID}";
+	rr:class ob:Thermostat];
+
+rr:predicateObjectMap [
+	rr:predicate ob:identifier;
+	rr:objectMap [
+		rml:reference "@ID";
+		rr:dataType xsd:string]].
+
+
+<#ShadeAndBlindTriplesMapping> a rr:TriplesMap;
+
+rml:logicalSource [
+	rml:source "./data/test_case.xml";
+	rml:iterator "/OccupantBehavior/Buildings/Building/Spaces/Space/Systems/ShadeAndBlind";
+	rml:referenceFormulation ql:XPath];
+
+rr:subjectMap [
+	rr:template "http://www.semanticweb.org/bimmer/ob/resource/system/{@ID}";
+	rr:class ob:ShadeAndBlind];
+
+rr:predicateObjectMap [
+	rr:predicate ob:identifier;
+	rr:objectMap [
+		rml:reference "@ID";
+		rr:dataType xsd:string]].
+
+
+
+<#OccupantTriplesMapping> a rr:TriplesMap;
+
+rml:logicalSource [
+	rml:source "./data/test_case.xml";
+	rml:iterator "/OccupantBehavior/Occupants/Occupant";
+	rml:referenceFormulation ql:XPath];
+
+rr:subjectMap [
+	rr:template "http://www.semanticweb.org/bimmer/ob/resource/occupant/{@ID}";
+	rr:class ob:Occupant];
+
+rr:predicateObjectMap [
+	rr:predicate ob:identifier;
+	rr:objectMap [
+		rml:reference "@ID";
+		rr:dataType xsd:string]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:occupantName;
+	rr:objectMap [
+		rml:reference "@Name";
+		rr:dataType xsd:string]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:occupantGender;
+	rr:objectMap [
+		rml:reference "@Gender";
+		rr:dataType xsd:string]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:occupantJobtype;
+	rr:objectMap [
+		rml:reference "@Jobtype";
+		rr:dataType xsd:string]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:occupantLifestyle;
+	rr:objectMap [
+		rml:reference "@Lifestyle";
+		rr:dataType xsd:string]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:hasBehavior;
+	rr:objectMap [
+		rml:reference "BehaviorID"]].
+
+
+
+
+
+<#BehaviorTriplesMapping> a rr:TriplesMap;
+
+rml:logicalSource [
+	rml:source "./data/test_case.xml";
+	rml:iterator "/OccupantBehavior/Behaviors/Behavior";
+	rml:referenceFormulation ql:XPath];
+
+
+rr:subjectMap [
+	rr:template "http://www.semanticweb.org/bimmer/ob/resource/behavior/{@ID}";
+	rr:class ob:Behavior];
+
+rr:predicateObjectMap [
+	rr:predicate ob:identifier;
+	rr:objectMap [
+		rml:reference "@ID";
+		rr:dataType xsd:string]];
+
+
+rr:predicateObjectMap [
+	rr:predicate ob:description;
+	rr:objectMap [
+		rml:reference "Description";
+		rr:dataType xsd:string]];
+
+rr:predicateObjectMap [
+	rr:predicate ob:drivenBy;
+	rr:objectMap[
+		rr:parentTriplesMap <#DriversTriplesMapping>;
+		rr:joinCondition[
+			rr:child "Drivers";
+			rr:parent "Drivers"]]].
+
+
+
+<#DriversTriplesMapping> a rr:TriplesMap;
+
+rml:logicalSource [
+	rml:source "./data/test_case.xml";
+	rml:iterator "/OccupantBehavior/Behaviors/Behavior/Drivers";
+	rml:referenceFormulation ql:XPath];
+
+rr:subjectMap [
+	rr:termType rr:BlankNode;
+	rr:class ob:Drivers].
+
+

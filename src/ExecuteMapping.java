@@ -13,35 +13,35 @@ import virtuoso.jena.driver.*;
 
 public class ExecuteMapping {
 
-    public static void mappingExecution(String[] args){
+    public static void main(String[] args){
 
-        String cwd = "./src";
-        String mappingPath = "./mappings/test.ttl";
-        String propertiesPath = "./utils/options.properties";
+        String mappingPath = "./mappings/mapping02.ttl";
+        String propertiesPath = "./utils/config.properties";
 
-        try{
+        try {
             File mappingFile = new File(mappingPath);
             InputStream mappingStream = new FileInputStream(mappingFile);
             QuadStore rmlStore = QuadStoreFactory.read(mappingStream);
 
             // Set up the basepath for the records factory
-            RecordsFactory factory = new RecordsFactory(mappingFile.getParent());
+            RecordsFactory factory = new RecordsFactory("./");
             // Create the executor
             Executor executor = new Executor(rmlStore, factory, null);
             // Execute the mapping
             QuadStore result = executor.execute(null);
 
             String graph = result.toString().split(" ")[3].split("\n")[0];
-            System.out.println("Graph: " + graph);
+            // Review two things: is it possible to create a new graph from the client side?
+            // How to incorporate graph information in the mappings to rml can generate it?
+            graph = "<http://localhost:8890/kpi>";
 
             String datasetNTriple = result.toString().replaceAll(graph, " .").replaceAll("null", " .");
-
             // Get credentials to access to virtuoso sparql service "connection"
             String user = "";
             String pass = "";
             String connection = "";
 
-            try{
+            try {
                 Properties properties = new Properties();
                 properties.load(new FileInputStream(new File(propertiesPath)));
                 user = properties.getProperty("user");
@@ -61,7 +61,8 @@ public class ExecuteMapping {
             vur.exec();
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("Not done");
+            System.out.println(e);
         }
 
     }

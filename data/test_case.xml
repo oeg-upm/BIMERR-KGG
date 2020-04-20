@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+An obXML case study based on 12 zones and 16 occupants
+
+Version History:
+	2016-07-28: Update to obXML version 1.2.1 for Occupancy Simulator paper
+		- Update the space ID to match the layout diagram
+		- Update the occupant ID to be readable
+	2016-09-07: Update to obXML version 1.3.2 for new obFMU
+		- Update the meeting event element
+		- Update the movement behavior element													
+	2016-10-17: Update to obXML version 1.3.3 for special behaviors								
+TODO: Update the behaviors to use more real behaviors
+ -->
+<OccupantBehavior xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="obXML" Version="1.3.3" xsi:noNamespaceSchemaLocation="obXML_v1.3.3.xsd">
+	
+	<Buildings>
+		<Building ID='Building_1'>
+			<Description>A office building which contains 6 spaces.</Description>
+			<Type>Office</Type>
+			<Address>Athens</Address>
+			<Spaces ID="Spaces">
+				<Space ID='S0'>
+					<Description>Outdoor space</Description>
+					<Type>Outdoor</Type>
+				</Space>
+				<Space ID='S1'>
+					<Type>Other</Type>
+					<Systems>
+						<HVAC ID='HVAC1'><Type>ZoneOnOff</Type>	</HVAC>
+						<Light ID='Light1'><Type>OnOff</Type></Light>
+						<Window ID='Window1'><Type>Operable</Type></Window>
+						<PlugLoad ID='PlugLoad1'><Type>ContinuousControl</Type></PlugLoad>
+						<Thermostat ID='Thermostat1'><Type>Adjustable</Type></Thermostat>
+						<ShadeAndBlind ID='ShadeAndBlind1'><Type>Operable</Type></ShadeAndBlind>
+					</Systems>
+					<OccupantID>O1</OccupantID>
+				</Space>
+				<Space ID='S2'>
+					<Description>Shared Office for 4 Researchers</Description>
+					<Type>OfficeShared</Type>
+					<Systems>
+						<HVAC ID='HVAC2'><Type>ZoneOnOff</Type>	</HVAC>
+						<Light ID='Light2'><Type>OnOff</Type></Light>
+						<Window ID='Window2'><Type>Operable</Type></Window>
+						<PlugLoad ID='PlugLoad2'><Type>ContinuousControl</Type></PlugLoad>
+						<Thermostat ID='Thermostat2'><Type>Adjustable</Type></Thermostat>
+						<ShadeAndBlind ID='ShadeAndBlind2'><Type>Operable</Type></ShadeAndBlind>
+					</Systems>
+					<OccupantID>O2</OccupantID>
+				</Space>
+				<Space ID='S3'>
+					<Description>Private office for the director</Description>
+					<Type>OfficePrivate</Type>
+					<Systems>
+						<HVAC ID='HVAC3'><Type>ZoneOnOff</Type></HVAC>
+						<Light ID='Light3'>	<Type>OnOff</Type></Light>
+						<Window ID='Window3'><Type>Operable</Type></Window>
+						<PlugLoad ID='PlugLoad3'><Type>ContinuousControl</Type></PlugLoad>
+						<Thermostat ID='Thermostat3'><Type>Adjustable</Type></Thermostat>
+						<ShadeAndBlind ID='ShadeAndBlind3'><Type>Operable</Type></ShadeAndBlind>
+					</Systems>
+					<OccupantID>O3</OccupantID>
+				</Space>
+				<Space ID='S4'>
+					<Description>Private office for director's secretary</Description>
+					<Type>OfficePrivate</Type>
+					<Systems>
+						<HVAC ID='HVAC4'><Type>ZoneOnOff</Type></HVAC>
+						<Light ID='Light4'><Type>OnOff</Type></Light>
+						<Window ID='Window4'><Type>Operable</Type></Window>
+						<PlugLoad ID='PlugLoad4'><Type>ContinuousControl</Type></PlugLoad>
+						<Thermostat ID='Thermostat4'><Type>Adjustable</Type></Thermostat>
+						<ShadeAndBlind ID='ShadeAndBlind4'><Type>Operable</Type></ShadeAndBlind>
+					</Systems>
+					<OccupantID>O4</OccupantID>
+				</Space>
+				<Space ID='S5'>
+					<Description>Private office for director's secretary</Description>
+					<Type>OfficePrivate</Type>
+					<Systems>
+						<HVAC ID='HVAC5'><Type>ZoneOnOff</Type></HVAC>
+						<Light ID='Light5'><Type>OnOff</Type></Light>
+						<Window ID='Window5'><Type>Operable</Type></Window>
+						<PlugLoad ID='PlugLoad5'><Type>ContinuousControl</Type></PlugLoad>
+						<Thermostat ID='Thermostat5'><Type>Adjustable</Type></Thermostat>
+						<ShadeAndBlind ID='ShadeAndBlind5'><Type>Operable</Type></ShadeAndBlind>
+					</Systems>
+					<OccupantID>O5</OccupantID>	
+				</Space>
+				<Space ID='S6'>
+					<Description>Private office for director's secretary</Description>
+					<Type>OfficePrivate</Type>
+					<Systems>
+						<HVAC ID='HVAC6'><Type>ZoneOnOff</Type></HVAC>
+						<Light ID='Light6'><Type>OnOff</Type></Light>
+						<Window ID='Window6'><Type>Operable</Type></Window>
+						<PlugLoad ID='PlugLoad6'><Type>ContinuousControl</Type></PlugLoad>
+						<Thermostat ID='Thermostat6'><Type>Adjustable</Type></Thermostat>
+						<ShadeAndBlind ID='ShadeAndBlind6'><Type>Operable</Type></ShadeAndBlind>
+					</Systems>
+					<OccupantID>O6</OccupantID>	
+				</Space>
+			</Spaces>
+		</Building>
+	</Buildings>
+	<Occupants>
+		<Occupant ID="O1" Name="OccupantS1">			
+			<BehaviorID>B_Therm1</BehaviorID>
+			<BehaviorID>B_Therm2</BehaviorID>
+			<BehaviorID>B_Therm3</BehaviorID>	
+		</Occupant>
+		<Occupant ID="O2" Name="OccupantS2">			
+			<BehaviorID>B_Therm1</BehaviorID>
+			<BehaviorID>B_Therm2</BehaviorID>
+			<BehaviorID>B_Therm3</BehaviorID>	
+		</Occupant>
+		<Occupant ID="O3" Name="OccupantS3">			
+			<BehaviorID>B_Therm1</BehaviorID>
+			<BehaviorID>B_Therm2</BehaviorID>
+			<BehaviorID>B_Therm3</BehaviorID>	
+		</Occupant>
+		<Occupant ID="O4" Name="OccupantS4">			
+			<BehaviorID>B_Therm1</BehaviorID>
+			<BehaviorID>B_Therm2</BehaviorID>
+			<BehaviorID>B_Therm3</BehaviorID>	
+		</Occupant>
+		<Occupant ID="O5" Name="OccupantS5">			
+			<BehaviorID>B_Therm1</BehaviorID>
+			<BehaviorID>B_Therm2</BehaviorID>
+			<BehaviorID>B_Therm3</BehaviorID>	
+		</Occupant>
+		<Occupant ID="O6" Name="OccupantS6">			
+			<BehaviorID>B_Therm1</BehaviorID>
+			<BehaviorID>B_Therm2</BehaviorID>
+			<BehaviorID>B_Therm3</BehaviorID>	
+		</Occupant>
+	</Occupants>	
+	<Behaviors>	
+		<Behavior ID="B_Therm1">
+			<Description>Winter set to 21.11 deg.C</Description>
+			<Drivers>
+				<Time>
+					<TimeofDay>Day</TimeofDay>
+					<TimeofDay>Evening</TimeofDay>
+					<DayofWeek>Weekdays</DayofWeek>
+					<SeasonType>Winter</SeasonType>
+				</Time>
+			</Drivers>
+			<Actions>
+				<Interaction>
+					<Type>SetToControlValue</Type>
+					<Formula>
+						<ConstantValue>
+							<CoefficientA>0.98</CoefficientA>
+						</ConstantValue>
+					</Formula>
+					<ControlValue>21.11</ControlValue>
+				</Interaction>
+			</Actions>
+			<Systems>
+				<Thermostats>
+					<ThermostatType>Adjustable</ThermostatType>
+				</Thermostats>
+			</Systems>
+		</Behavior>
+		<Behavior ID="B_Therm2">
+			<Description>Spring and Fall set to 22.5 deg.C</Description>
+			<Drivers>
+				<Time>
+					<TimeofDay>Day</TimeofDay>
+					<TimeofDay>Evening</TimeofDay>
+					<DayofWeek>Weekdays</DayofWeek>
+					<SeasonType>Spring</SeasonType>
+					<SeasonType>Fall</SeasonType>
+				</Time>
+			</Drivers>
+			<Actions>
+				<Interaction>
+					<Type>SetToControlValue</Type>
+					<Formula>
+						<ConstantValue>
+							<CoefficientA>0.98</CoefficientA>
+						</ConstantValue>
+					</Formula>
+					<ControlValue>22.5</ControlValue>
+				</Interaction>
+			</Actions>
+			<Systems>
+				<Thermostats>
+					<ThermostatType>Adjustable</ThermostatType>
+				</Thermostats>
+			</Systems>
+		</Behavior>
+		<Behavior ID="B_Therm3">
+			<Description>Summer set to 23.89 deg.C</Description>
+			<Drivers>
+				<Time>
+					<TimeofDay>Day</TimeofDay>
+					<TimeofDay>Evening</TimeofDay>
+					<DayofWeek>Weekdays</DayofWeek>
+					<SeasonType>Summer</SeasonType>
+				</Time>
+			</Drivers>
+			<Actions>
+				<Interaction>
+					<Type>SetToControlValue</Type>
+					<Formula>
+						<ConstantValue>
+							<CoefficientA>0.98</CoefficientA>
+						</ConstantValue>
+					</Formula>
+					<ControlValue>23.89</ControlValue>
+				</Interaction>
+			</Actions>
+			<Systems>
+				<Thermostats>
+					<ThermostatType>Adjustable</ThermostatType>
+				</Thermostats>
+			</Systems>
+		</Behavior>	
+		<Behavior ID="B_Therm4">
+			<Description>Set thermostat to 23 deg.C based on the probability curve</Description>
+			<Drivers>
+				<Time>
+				</Time>
+				<Environment>
+					<Parameter ID="RenIndoorTemp" Name="Room dry-bulb air temperature">
+						<Type>RoomAirTemperature</Type>
+					</Parameter>
+				</Environment>
+			</Drivers>
+			<Actions>
+				<Interaction>
+					<Type>SetToControlValue</Type>
+					<Formula>
+						<Weibull1D>
+							<Description>S Shaped Curve Probability Function</Description>
+							<CoefficientA>27.75</CoefficientA>
+							<CoefficientB>15.87</CoefficientB>
+							<CoefficientC>2.22</CoefficientC>
+							<Parameter1ID>RenIndoorTemp</Parameter1ID>
+						</Weibull1D>
+					</Formula>
+					<ControlValue>23</ControlValue>
+				</Interaction>
+			</Actions>
+			<Systems>
+				<Thermostats>
+					<ThermostatType>Adjustable</ThermostatType>
+				</Thermostats>
+			</Systems>
+		</Behavior>																				   			   	
+	</Behaviors>
+	<Seasons>
+		<Season Type="All">
+			<StartMonth>1</StartMonth>
+			<StartDay>1</StartDay>
+			<EndMonth>12</EndMonth>
+			<EndDay>31</EndDay>
+		</Season>
+		<Season Type="Spring">
+			<StartMonth>2</StartMonth>
+			<StartDay>1</StartDay>
+			<EndMonth>4</EndMonth>
+			<EndDay>30</EndDay>
+		</Season>
+		<Season Type="Summer">
+			<StartMonth>5</StartMonth>
+			<StartDay>1</StartDay>
+			<EndMonth>7</EndMonth>
+			<EndDay>31</EndDay>
+		</Season>
+		<Season Type="Fall">
+			<StartMonth>8</StartMonth>
+			<StartDay>1</StartDay>
+			<EndMonth>10</EndMonth>
+			<EndDay>31</EndDay>
+		</Season>
+		<Season Type="Winter">
+			<StartMonth>11</StartMonth>
+			<StartDay>1</StartDay>
+			<EndMonth>1</EndMonth>
+			<EndDay>31</EndDay>
+		</Season>
+	</Seasons>
+	<Holidays>
+		<Holiday Name="New Year's Day"><Date>2015-01-01</Date></Holiday>
+		<Holiday Name="Martin Luther King, Jr. Day"><Date>2015-01-19</Date></Holiday>
+		<Holiday Name="George Washington’s Birthday"><Date>2015-02-16</Date></Holiday>
+		<Holiday Name="Memorial Day"><Date>2015-05-25</Date></Holiday>
+		<Holiday Name="Independence Day"><Date>2015-07-03</Date></Holiday>
+		<Holiday Name="Labor Day"><Date>2015-09-07</Date></Holiday>
+		<Holiday Name="Columbus Day"><Date>2015-10-02</Date></Holiday>
+		<Holiday Name="Veterans Day"><Date>2015-11-11</Date></Holiday>
+		<Holiday Name="Thanksgiving Day"><Date>2015-11-26</Date></Holiday>
+		<Holiday Name="Christmas Day"><Date>2015-12-25</Date></Holiday>
+	</Holidays>
+</OccupantBehavior>

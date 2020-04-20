@@ -1,0 +1,29 @@
+<component name="libraryTable">
+  <library name="org.rdfhdt:hdt-jena:1.1" type="repository">
+    <properties maven-id="org.rdfhdt:hdt-jena:1.1" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/rdfhdt/hdt-jena/1.1/hdt-jena-1.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/rdfhdt/hdt-java-core/1.1/hdt-java-core-1.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/junit/junit-dep/4.8.2/junit-dep-4.8.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/jena/jena-arq/2.11.0/jena-arq-2.11.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.2.3/httpclient-4.2.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpcore/4.2.2/httpcore-4.2.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.6/commons-codec-1.6.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/jcl-over-slf4j/1.6.4/jcl-over-slf4j-1.6.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/beust/jcommander/1.32/jcommander-1.32.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/rdfhdt/hdt-api/1.1/hdt-api-1.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-compress/1.6/commons-compress-1.6.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/tukaani/xz/1.4/xz-1.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/jena/jena-core/2.11.0/jena-core-2.11.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/jena/jena-iri/1.0.0/jena-iri-1.0.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/xerces/xercesImpl/2.11.0/xercesImpl-2.11.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-log4j12/1.6.4/slf4j-log4j12-1.6.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/log4j/log4j/1.2.16/log4j-1.2.16.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
